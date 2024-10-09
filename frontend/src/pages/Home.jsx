@@ -17,15 +17,16 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/books')
-      .then((response) => {
-        setBooks(response.data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
+  .get('http://localhost:5555/books') // Ensure this is the correct URL
+  .then((response) => {
+    setBooks(response.data.data);
+    setLoading(false);
+  })
+  .catch((error) => {
+    console.error('Error fetching books:', error);
+    setLoading(false);
+  });
+
   }, []);
 
   return (
