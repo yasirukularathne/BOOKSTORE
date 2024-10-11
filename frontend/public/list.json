@@ -1,211 +1,99 @@
 [
-  {
-    "id": 1,
-    "name": "story Book",
-    "title": "cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-    "price": 0,
-    "category": "Free",
-    "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-  },
-
-  {
-    "id": 2,
-    "name": "story Book",
-    "title": "cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-    "price": 0,
-    "category": "Free",
-    "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-  },
-
-
-  {
-
-
-
-    "id":3,
-    "name":"Comedy Book",
-    "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-    "price":20,
-    "category":"Entertainment",
-    "image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-    
-    },
-
-    
-
-
     {
-
-
-
-        "id":4,
-        "name":"story Book",
-        "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-        "price":50,
-        "category":"sports",
-        "image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-        
-        },
-
-        
-
-
-
-        {
-
-
-
-            "id":5,
-            "name":"Music Book",
-            "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-            "price":0,
-            "category":"Song",
-            "Ïmage":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-            
-            },
-
-            
-
-
-
-
-
-
-
-
-
-
-            {
-
-
-
-                "id":6,
-                "name":"story Book",
-                "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-                "price":0,
-                "category":"Free",
-                "image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-                
-                },
-
-                
-
-
-
-
-
-
-
-
-
-
-                {
-
-
-
-                    "id":7,
-                    "name":"story Book",
-                    "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-                    "price":0,
-                    "category":"Free",
-                    "image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-                    
-                    },
-
-                    
-
-
-
-
-
-                    {
-
-
-
-                        "id":8,
-                        "name":"story Book",
-                        "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-                        "price":0,
-                        "category":"Free",
-                        "image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-                        
-                        },
-                        {
-
-
-
-                            "id":10,
-                            "name":"story Book",
-                            "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-                            "price":0,
-                            "category":"Free",
-                            "image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-                            
-                            },
-                            {
-
-
-
-                                "id":9,
-                                "name":"Food Book",
-                                "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-                                "price":0,
-                                "category":"Food",
-                                "image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-                                
-                                },
-                                {
-
-
-
-                                    "id":11,
-                                    "name":"story Book",
-                                    "title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-                                    "price":0,
-                                    "category":"Free",
-                                    "image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-                                    
-                                    },
-{
-
-
-
-"id":12,
-"name":"story Book",
-"title":"cgvxbcjkcxbhjbzcjbzxjbhj chzbhjbjbcbnbzcbjbcjcz",
-"price":0,
-"category":"Free",
-"image":"https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
-
-}
-                                                                                                                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]
+      "id": 1,
+      "name": "Adventure Tales",
+      "title": "The Quest for the Lost City",
+      "price": 15.99,
+      "category": "Free",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 2,
+      "name": "Mystery Stories",
+      "title": "The Secrets of the Shadows",
+      "price": 9.99,
+      "category": "Free",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 3,
+      "name": "Comedy Chronicles",
+      "title": "Laughs in the Dark",
+      "price": 20.00,
+      "category": "Entertainment",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 4,
+      "name": "Sports Legends",
+      "title": "Chasing Greatness",
+      "price": 29.50,
+      "category": "Sports",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 5,
+      "name": "Music Journeys",
+      "title": "Melodies of the Heart",
+      "price": 12.99,
+      "category": "Music",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 6,
+      "name": "Fantasy Realms",
+      "title": "Wonders of the Enchanted Forest",
+      "price": 8.50,
+      "category": "Free",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 7,
+      "name": "Science Explorations",
+      "title": "The Universe Unveiled",
+      "price": 25.00,
+      "category": "Science",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 8,
+      "name": "Culinary Delights",
+      "title": "Recipes from Around the World",
+      "price": 15.50,
+      "category": "Food",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 9,
+      "name": "Historical Tales",
+      "title": "Echoes from the Past",
+      "price": 18.75,
+      "category": "History",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 10,
+      "name": "Artistic Expressions",
+      "title": "Colors of the Soul",
+      "price": 22.00,
+      "category": "Art",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 11,
+      "name": "Travel Adventures",
+      "title": "Journey Through Time",
+      "price": 14.99,
+      "category": "Travel",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    },
+    {
+      "id": 12,
+      "name": "Self-Help Guide",
+      "title": "The Path to Happiness",
+      "price": 10.50,
+      "category": "Self-Help",
+      "image": "https://img.freepik.com/free-photo/open-book-concept-fairy-tale-fiction-storytelling_23-2150793723.jpg?ga=GA1.1.603473978.1697991262&semt=ais_hybrid-rr-similar"
+    }
+  ]
+  
