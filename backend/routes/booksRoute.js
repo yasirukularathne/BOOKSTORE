@@ -6,26 +6,37 @@ const router = express.Router();
 // Route for Save a new Book
 router.post("/", async (request, response) => {
   try {
-    if (
-      !request.body.title ||
-      !request.body.author ||
-      !request.body.publishYear
-    ) {
+    const { title, author, publishYear, photo, driveLink } = request.body;
+
+    if (!title || !author || !publishYear || !photo || !driveLink) {
+      console.log('Missing fields:', { title, author, publishYear, photo: !!photo, driveLink });
       return response.status(400).send({
-        message: "Send all required fields: title, author, publishYear",
+        message: "Send all required fields: title, author, publishYear, photo, driveLink",
       });
     }
+
+    // Validate Google Drive link format
+    const driveLinkPattern = /^https:\/\/drive\.google\.com\/drive\/folders\/[a-zA-Z0-9_-]+$/;
+    if (!driveLinkPattern.test(driveLink)) {
+      return response.status(400).send({
+        message: "Invalid Google Drive link format",
+      });
+    }
+
     const newBook = {
-      title: request.body.title,
-      author: request.body.author,
-      publishYear: request.body.publishYear,
+      title,
+      author,
+      publishYear,
+      photo,
+      driveLink
     };
 
+    console.log('Creating new book:', newBook);
     const book = await Book.create(newBook);
 
     return response.status(201).send(book);
   } catch (error) {
-    console.log(error.message);
+    console.log('Error creating book:', error.message);
     response.status(500).send({ message: error.message });
   }
 });
