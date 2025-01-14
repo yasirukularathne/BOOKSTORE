@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const bookSchema = mongoose.Schema(
+const bookSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -16,22 +16,22 @@ const bookSchema = mongoose.Schema(
     },
     photo: {
       type: String,
-      required: true,
+      required: false,
     },
     driveLink: {
       type: String,
+      required: false,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
-      validate: {
-        validator: function(v) {
-          return /^https:\/\/drive\.google\.com\/drive\/folders\/[a-zA-Z0-9_-]+$/.test(v);
-        },
-        message: props => `${props.value} is not a valid Google Drive folder link!`
-      }
-    }
+    },
   },
   {
     timestamps: true,
   }
 );
 
-export const Book = mongoose.model("Book", bookSchema);
+const Book = mongoose.model("Book", bookSchema);
+export default Book;

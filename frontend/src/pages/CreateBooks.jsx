@@ -4,6 +4,7 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import { useAuth } from '../context/AuthContext';
 
 const CreateBooks = () => {
   const [title, setTitle] = useState('');
@@ -16,6 +17,7 @@ const CreateBooks = () => {
   const [fileError, setFileError] = useState('');
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const { user } = useAuth();
 
   const validateDriveLink = (link) => {
     // Remove any /u/1/ or similar from the path
@@ -91,12 +93,17 @@ const CreateBooks = () => {
       author,
       publishYear: Number(publishYear),
       photo,
-      driveLink
+      driveLink,
+      user: user._id
     };
 
     setLoading(true);
     axios
-      .post('http://localhost:5555/books', data)
+      .post('http://localhost:5555/books', data, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Created successfully', { variant: 'success' });

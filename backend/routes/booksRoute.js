@@ -1,7 +1,11 @@
 import express from "express";
-import { Book } from "../models/bookmodel.js";
+import { protect } from '../middleware/auth.js';
+import Book from '../models/bookModel.js';
 
 const router = express.Router();
+
+// Protected routes
+router.use(protect);
 
 // Route for Save a new Book
 router.post("/", async (request, response) => {
@@ -28,7 +32,8 @@ router.post("/", async (request, response) => {
       author,
       publishYear,
       photo,
-      driveLink
+      driveLink,
+      user: request.user._id
     };
 
     console.log('Creating new book:', newBook);
@@ -44,7 +49,7 @@ router.post("/", async (request, response) => {
 // Route for Get All Books from database
 router.get("/", async (request, response) => {
   try {
-    const books = await Book.find({});
+    const books = await Book.find({ user: request.user._id });
 
     return response.status(200).json({
       count: books.length,

@@ -1,0 +1,257 @@
+.bookshelf {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  background: #111;
+  overflow: hidden;
+}
+
+.shelf-container {
+  width: 300px;
+  height: 150px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.shelf-background {
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  background-image: linear-gradient(
+      to top,
+      #222 5%,
+      #111 6%,
+      #111 7%,
+      transparent 7%
+    ),
+    linear-gradient(to bottom, #111 30%, transparent 30%),
+    /* Add all the book gradients here */
+      linear-gradient(to right, #222, #2e2e2e 5%, transparent 5%);
+  background-size: 300px 150px;
+  background-position: center bottom;
+}
+
+.shelf-foreground {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #111;
+  background-image: linear-gradient(
+      to top,
+      tan 5%,
+      #111 6%,
+      #111 7%,
+      transparent 7%
+    ),
+    /* Book heights */ linear-gradient(to bottom, #111 30%, transparent 30%),
+    linear-gradient(to bottom, #111 35%, transparent 35%),
+    linear-gradient(to bottom, #111 37.5%, transparent 37.5%),
+    linear-gradient(to bottom, #111 40%, transparent 40%),
+    linear-gradient(to bottom, #111 48%, transparent 48%),
+    linear-gradient(to bottom, #111 68%, transparent 68%),
+    /* Colorful books */
+      linear-gradient(
+        to right,
+        firebrick,
+        darken(firebrick, 10) 5%,
+        transparent 5%
+      ),
+    linear-gradient(
+      to right,
+      transparent 6%,
+      tomato 6%,
+      darkred 9%,
+      transparent 9%
+    ),
+    linear-gradient(
+      to right,
+      transparent 27%,
+      darkolivegreen 27%,
+      darkgreen 34%,
+      transparent 34%
+    ),
+    linear-gradient(
+      to right,
+      transparent 51%,
+      salmon 51%,
+      darksalmon 57%,
+      transparent 57%
+    ),
+    linear-gradient(
+      to right,
+      transparent 42%,
+      teal 42%,
+      darkcyan 44%,
+      transparent 44%
+    ),
+    linear-gradient(
+      to right,
+      transparent 45%,
+      teal 45%,
+      darkcyan 47%,
+      transparent 47%
+    ),
+    linear-gradient(
+      to right,
+      transparent 48%,
+      teal 48%,
+      darkcyan 50%,
+      transparent 50%
+    ),
+    linear-gradient(
+      to right,
+      transparent 87%,
+      lightslategrey 87%,
+      darkslategrey 91%,
+      transparent 91%
+    ),
+    linear-gradient(
+      to right,
+      transparent 14%,
+      darkkhaki 14%,
+      olive 20%,
+      transparent 20%
+    ),
+    linear-gradient(
+      to right,
+      transparent 10%,
+      olive 10%,
+      darkolivegreen 13%,
+      transparent 13%
+    ),
+    linear-gradient(
+      to right,
+      transparent 21%,
+      saddlebrown 21%,
+      brown 25%,
+      transparent 25%
+    ),
+    linear-gradient(
+      to right,
+      transparent 58%,
+      saddlebrown 58%,
+      brown 64%,
+      transparent 64%
+    ),
+    linear-gradient(
+      to right,
+      transparent 92%,
+      darkslategrey 92%,
+      black 95%,
+      transparent 95%
+    ),
+    linear-gradient(
+      to right,
+      transparent 96%,
+      darkslategrey 96%,
+      black 99%,
+      transparent 99%
+    ),
+    /* Shelf details */
+      linear-gradient(
+        to bottom,
+        transparent 68.5%,
+        transparent 76%,
+        #111 76%,
+        #111 77.5%,
+        transparent 77.5%,
+        transparent 86%,
+        #111 86%,
+        #111 87.5%,
+        transparent 87.5%
+      ),
+    linear-gradient(
+      to right,
+      transparent 35%,
+      indianred 35%,
+      firebrick 41%,
+      transparent 41%
+    ),
+    linear-gradient(
+      to right,
+      transparent 78%,
+      rosybrown 78%,
+      brown 80%,
+      transparent 80%,
+      transparent 82%,
+      rosybrown 82%,
+      brown 83%,
+      transparent 83%
+    ),
+    linear-gradient(
+      to right,
+      transparent 66%,
+      brown 66%,
+      #502020 85%,
+      transparent 85%
+    );
+  background-size: 300px 150px;
+  background-position: center bottom;
+  clip-path: circle(150px at center center);
+  animation: flashlight 5000ms infinite;
+}
+
+.shelf-eyes {
+  width: 25px;
+  height: 10px;
+  position: absolute;
+  left: calc(50% + 59px);
+  bottom: 100px;
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle, white 50%, transparent 50%),
+    radial-gradient(circle, white 50%, transparent 50%);
+  background-size: 10px 10px;
+  background-position: left center, right center;
+  animation: eyes 5000ms infinite;
+}
+
+@keyframes flashlight {
+  0%,
+  9% {
+    opacity: 0;
+    clip-path: circle(150px at 45% 10%);
+  }
+  10%,
+  15%,
+  85% {
+    opacity: 1;
+  }
+  50% {
+    clip-path: circle(150px at 60% 20%);
+  }
+  54%,
+  100% {
+    clip-path: circle(150px at 55% 92%);
+  }
+  88%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes eyes {
+  0%,
+  52% {
+    opacity: 0;
+  }
+  53%,
+  87% {
+    opacity: 1;
+  }
+  64% {
+    transform: scaleY(1);
+  }
+  67% {
+    transform: scaleY(0);
+  }
+  70% {
+    transform: scaleY(1);
+  }
+  88%,
+  100% {
+    opacity: 0;
+  }
+}
