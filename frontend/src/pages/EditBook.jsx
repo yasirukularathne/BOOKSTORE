@@ -155,7 +155,7 @@ const EditBook = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <BackButton />
         <div className="flex items-center justify-center space-x-3 my-8">
           <h1 className="text-3xl font-bold text-gray-800">Edit Book</h1>
@@ -163,144 +163,172 @@ const EditBook = () => {
 
         {loading && <Spinner />}
 
-        <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  value={formData.title}
-                  onChange={(e) =>
-                    setFormData({ ...formData, title: e.target.value })
-                  }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Form Section - Left Side */}
+          <div className="flex-1 bg-white rounded-xl shadow-lg p-6 sm:p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.title}
+                    onChange={(e) =>
+                      setFormData({ ...formData, title: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
                          focus:ring-blue-500 focus:border-transparent transition duration-200"
-                  placeholder="Enter book title"
-                />
+                    placeholder="Enter book title"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700">
+                    Author
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.author}
+                    onChange={(e) =>
+                      setFormData({ ...formData, author: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
+                         focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    placeholder="Enter author name"
+                  />
+                </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">
-                  Author
+                  Publish Year
                 </label>
                 <input
-                  type="text"
-                  value={formData.author}
+                  type="number"
+                  value={formData.publishYear}
                   onChange={(e) =>
-                    setFormData({ ...formData, author: e.target.value })
+                    setFormData({ ...formData, publishYear: e.target.value })
                   }
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
-                         focus:ring-blue-500 focus:border-transparent transition duration-200"
-                  placeholder="Enter author name"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">
-                Publish Year
-              </label>
-              <input
-                type="number"
-                value={formData.publishYear}
-                onChange={(e) =>
-                  setFormData({ ...formData, publishYear: e.target.value })
-                }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
                        focus:ring-blue-500 focus:border-transparent transition duration-200"
-                placeholder="Enter publish year"
-              />
-            </div>
+                  placeholder="Enter publish year"
+                />
+              </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center">
-                <FaImage className="mr-2" /> Book Cover Photo
-              </label>
-              <div className="flex items-center space-x-4">
-                <div className="flex-1">
+              <div className="lg:hidden">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 flex items-center">
+                    <FaImage className="mr-2" /> Book Cover Photo
+                  </label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handlePhotoChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
-                           focus:ring-blue-500 focus:border-transparent transition duration-200"
+                         focus:ring-blue-500 focus:border-transparent transition duration-200"
                   />
                   {fileError && (
                     <p className="mt-1 text-sm text-red-500">{fileError}</p>
                   )}
                 </div>
-                {photoPreview && (
-                  <img
-                    src={photoPreview}
-                    alt="Preview"
-                    className="w-20 h-20 object-cover rounded-lg shadow-md"
-                  />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700 flex items-center">
+                  <FaLink className="mr-2" /> Google Drive Link
+                </label>
+                <input
+                  type="text"
+                  value={formData.driveLink}
+                  onChange={(e) =>
+                    setFormData({ ...formData, driveLink: e.target.value })
+                  }
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
+                       focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  placeholder="Enter Google Drive folder link"
+                />
+              </div>
+
+              <div className="flex items-center justify-between pt-6">
+                <button
+                  type="button"
+                  onClick={handleDelete}
+                  className="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg 
+                       hover:bg-red-600 transition duration-200"
+                >
+                  <FaTrash />
+                  <span>Delete</span>
+                </button>
+
+                <div className="flex items-center space-x-4">
+                  <button
+                    type="button"
+                    onClick={handleDownload}
+                    disabled={downloadLoading || !formData.driveLink}
+                    className="flex items-center space-x-2 px-4 py-2 bg-green-500 text-white rounded-lg 
+                         hover:bg-green-600 transition duration-200 disabled:opacity-50"
+                  >
+                    <FaDownload />
+                    <span>{downloadLoading ? "Opening..." : "Read"}</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate("/")}
+                    className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 
+                         hover:bg-gray-50 transition duration-200"
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded-lg 
+                         hover:bg-blue-600 transition duration-200 disabled:opacity-50"
+                  >
+                    <span>{loading ? "Saving..." : "Save"}</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          {/* Photo Preview Section - Right Side */}
+          <div className="hidden lg:block w-96">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h2 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
+                <FaImage className="mr-2" /> Book Cover
+              </h2>
+              <div className="space-y-4">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handlePhotoChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
+                       focus:ring-blue-500 focus:border-transparent transition duration-200"
+                />
+                {fileError && (
+                  <p className="text-sm text-red-500">{fileError}</p>
+                )}
+                {photoPreview ? (
+                  <div className="relative aspect-[3/4] w-full">
+                    <img
+                      src={photoPreview}
+                      alt="Book Preview"
+                      className="w-full h-full object-cover rounded-lg shadow-md"
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-[3/4] w-full bg-gray-100 rounded-lg flex items-center justify-center">
+                    <FaImage className="text-4xl text-gray-400" />
+                  </div>
                 )}
               </div>
             </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center">
-                <FaLink className="mr-2" /> Google Drive Link
-              </label>
-              <input
-                type="text"
-                value={formData.driveLink}
-                onChange={(e) =>
-                  setFormData({ ...formData, driveLink: e.target.value })
-                }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
-                       focus:ring-blue-500 focus:border-transparent transition duration-200"
-                placeholder="Enter Google Drive folder link"
-              />
-            </div>
-
-            <div className="flex items-center justify-between pt-6">
-              <button
-                type="button"
-                onClick={handleDelete}
-                className="flex items-center space-x-2 px-4 py-2 bg-red-500 text-white rounded-lg 
-                       hover:bg-red-600 transition duration-200"
-              >
-                <FaTrash />
-                <span>Delete</span>
-              </button>
-
-              <div className="flex items-center space-x-4">
-                <button
-                  type="button"
-                  onClick={handleDownload}
-                  disabled={downloadLoading || !formData.driveLink}
-                  className="flex items-center space-x-2 px-4 py-2 bg-green-500 text-white rounded-lg 
-                         hover:bg-green-600 transition duration-200 disabled:opacity-50"
-                >
-                  <FaDownload />
-                  <span>{downloadLoading ? "Opening..." : "Read"}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => navigate("/")}
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 
-                         hover:bg-gray-50 transition duration-200"
-                >
-                  Cancel
-                </button>
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="flex items-center space-x-2 px-4 py-2 bg-blue-500 text-white rounded-lg 
-                         hover:bg-blue-600 transition duration-200 disabled:opacity-50"
-                >
-                  <span>{loading ? "Saving..." : "Save"}</span>
-                </button>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
