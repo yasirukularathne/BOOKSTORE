@@ -1,104 +1,77 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import api from "../api/axios";
 import BackButton from "../components/Backbutton";
 import Spinner from "../components/Spinner";
-import BookShelf from "../components/BookShelf";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaEdit } from "react-icons/fa";
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-    axios
-      .get(`http://localhost:5555/books/${id}`)
-      .then((response) => {
+    const fetchBook = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get(`/books/${id}`);
         setBook(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
+        setError(null);
+      } catch (error) {
         console.error("Error fetching book:", error);
         setError("Failed to load book details");
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchBook();
   }, [id]);
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleString("en-US", {
-      dateStyle: "medium",
-      timeStyle: "short",
-    });
-  };
+  if (loading) return <Spinner />;
+  if (error) return <div className="text-red-500 text-center">{error}</div>;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 p-4">
       <BackButton />
       <h1 className="text-3xl my-4 text-center font-bold">Book Details</h1>
-
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
-          <BookShelf />
-        </div>
-
-        {loading ? (
-          <div className="flex justify-center mt-8">
-            <Spinner />
+      <div className="max-w-3xl mx-auto">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          {book.photo && (
+            <div className="mb-4">
+              <img
+                src={book.photo}
+                alt={book.title}
+                className="w-48 h-48 object-cover rounded mx-auto"
+              />
+            </div>
+          )}
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold">{book.title}</h2>
+            <p className="text-gray-600">By {book.author}</p>
+            <p className="text-gray-500">Published: {book.publishYear}</p>
           </div>
-        ) : error ? (
-          <div className="text-red-500 text-center text-lg">{error}</div>
-        ) : (
-          <div className="mt-8 flex flex-col border-2 border-sky-400 rounded-xl w-full md:w-fit p-4 mx-auto bg-white shadow-lg">
-            {book.photo && (
-              <div className="my-4">
-                <span className="text-xl mr-4 text-gray-500">Book Cover</span>
-                <img
-                  src={book.photo}
-                  alt={book.title}
-                  className="mt-2 w-48 h-48 object-cover rounded-lg shadow-md mx-auto md:mx-0"
-                />
-              </div>
-            )}
-            <div className="my-4">
-              <span className="text-xl mr-4 text-gray-500">Title</span>
-              <span className="font-medium">{book.title}</span>
-            </div>
-            <div className="my-4">
-              <span className="text-xl mr-4 text-gray-500">Author</span>
-              <span>{book.author}</span>
-            </div>
-            <div className="my-4">
-              <span className="text-xl mr-4 text-gray-500">Publish Year</span>
-              <span>{book.publishYear}</span>
-            </div>
+          <div className="flex justify-between items-center mt-6">
             {book.driveLink && (
-              <div className="my-4">
-                <span className="text-xl mr-4 text-gray-500">Drive Link</span>
-                <a
-                  href={book.driveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 flex items-center gap-2 inline-flex"
-                >
-                  Open in Drive
-                  <FaExternalLinkAlt />
-                </a>
-              </div>
+              <a
+                href={book.driveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-700 flex items-center gap-2"
+              >
+                Open in Drive <FaExternalLinkAlt />
+              </a>
             )}
-            <div className="my-4">
-              <span className="text-xl mr-4 text-gray-500">Created</span>
-              <span>{formatDate(book.createdAt)}</span>
-            </div>
-            <div className="my-4">
-              <span className="text-xl mr-4 text-gray-500">Updated</span>
-              <span>{formatDate(book.updatedAt)}</span>
-            </div>
+            <Link
+              to={`/books/edit/${book._id}`}
+              className="inline-flex items-center text-yellow-600 hover:text-yellow-700 px-4 py-2 rounded-lg border border-yellow-600 hover:bg-yellow-50"
+            >
+              <FaEdit className="mr-2" />
+              Edit Book
+            </Link>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

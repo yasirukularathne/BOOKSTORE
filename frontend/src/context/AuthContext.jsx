@@ -26,19 +26,19 @@ export const AuthProvider = ({ children }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials)
       });
-      const data = await response.json();
       
+      const data = await response.json();
       if (data.success) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         setUser(data.user);
         enqueueSnackbar('Login successful', { variant: 'success' });
-        navigate('/books');
+        navigate('/'); // Redirect to home after login
         return true;
       }
       throw new Error(data.message);
     } catch (error) {
-      enqueueSnackbar(error.message, { variant: 'error' });
+      enqueueSnackbar(error.message || 'Login failed', { variant: 'error' });
       return false;
     }
   };
@@ -72,3 +72,5 @@ export const useAuth = () => {
   }
   return context;
 };
+
+export default AuthContext;

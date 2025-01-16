@@ -1,10 +1,10 @@
 import express from "express";
 import { protect } from '../middleware/auth.js';
-import Book from '../models/bookModel.js';
+import Book from '../models/bookmodel.js';
 
 const router = express.Router();
 
-// Protected routes
+// Apply auth middleware to all routes
 router.use(protect);
 
 // Route for Save a new Book
@@ -47,17 +47,12 @@ router.post("/", async (request, response) => {
 });
 
 // Route for Get All Books from database
-router.get("/", async (request, response) => {
+router.get("/", async (req, res) => {
   try {
-    const books = await Book.find({ user: request.user._id });
-
-    return response.status(200).json({
-      count: books.length,
-      data: books,
-    });
+    const books = await Book.find({ user: req.user.id });
+    res.json(books);
   } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 

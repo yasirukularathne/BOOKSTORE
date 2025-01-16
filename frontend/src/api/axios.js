@@ -1,18 +1,24 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5555'
+  baseURL: 'http://localhost:5555',
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    return Promise.reject(error);
+  }
 );
 
 api.interceptors.response.use(

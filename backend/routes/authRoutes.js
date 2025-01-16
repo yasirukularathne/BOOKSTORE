@@ -1,14 +1,14 @@
-import express from 'express';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
-import User from '../models/userModel.js';
-import { jwtConfig } from '../config.js';
-import { validateRegistration } from '../middleware/validateRequest.js';
-import { protect } from '../middleware/auth.js';
+import express from "express";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import User from "../models/userModel.js";
+import { jwtConfig } from "../config.js";
+import { validateRegistration } from "../middleware/validateRequest.js";
+import { protect } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post('/register', validateRegistration, async (req, res) => {
+router.post("/register", validateRegistration, async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -17,21 +17,19 @@ router.post('/register', validateRegistration, async (req, res) => {
     if (userExists) {
       return res.status(400).json({
         success: false,
-        message: 'Email already registered'
+        message: "Email already registered",
       });
     }
 
     const user = await User.create({
       name,
       email,
-      password
+      password,
     });
 
-    const token = jwt.sign(
-      { id: user._id },
-      jwtConfig.secret,
-      { expiresIn: jwtConfig.expiresIn }
-    );
+    const token = jwt.sign({ id: user._id }, jwtConfig.secret, {
+      expiresIn: "30d",
+    });
 
     res.status(201).json({
       success: true,
@@ -39,23 +37,19 @@ router.post('/register', validateRegistration, async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
-      }
+        email: user.email,
+      },
     });
-
-    if (pm.response.code === 200) {
-      pm.environment.set("authToken", pm.response.json().token);
-    }
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     });
   }
 });
 
 // Login endpoint
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -64,7 +58,7 @@ router.post('/login', async (req, res) => {
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: "Invalid credentials",
       });
     }
 
@@ -73,16 +67,14 @@ router.post('/login', async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: "Invalid credentials",
       });
     }
 
     // Generate JWT token
-    const token = jwt.sign(
-      { id: user._id },
-      jwtConfig.secret,
-      { expiresIn: jwtConfig.expiresIn }
-    );
+    const token = jwt.sign({ id: user._id }, jwtConfig.secret, {
+      expiresIn: "30d",
+    });
 
     res.json({
       success: true,
@@ -90,29 +82,29 @@ router.post('/login', async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
-      }
+        email: user.email,
+      },
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     });
   }
 });
 
 // Delete user route
-router.delete('/delete', protect, async (req, res) => {
+router.delete("/delete", protect, async (req, res) => {
   try {
     await User.findByIdAndDelete(req.user._id);
-    res.json({ 
-      success: true, 
-      message: 'User deleted successfully' 
+    res.json({
+      success: true,
+      message: "User deleted successfully",
     });
   } catch (error) {
-    res.status(400).json({ 
-      success: false, 
-      message: error.message 
+    res.status(400).json({
+      success: false,
+      message: error.message,
     });
   }
 });
